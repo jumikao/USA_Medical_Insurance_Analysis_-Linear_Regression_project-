@@ -6,4 +6,3 @@ data_df = pd.read_csv(r'https://raw.githubusercontent.com/Kamil128/ProjektPrakty
 print(data_df.head())
 print("........")
 print(data_df.columns)
-
