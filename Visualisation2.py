@@ -3,8 +3,8 @@ import os
 
 #przypisz sciezke i plik z danymi do zmiennej
 #DOWNLOAD_ROOT = "https://raw.githubusercontent.com/Kamil128/ProjektPraktycznyRegresja/main/data/medical_cost/"
-DOWNLOAD_ROOT = "https://github.com/jumikao/USA_Medical_Insurance_Analysis/"
-DATA_URL = DOWNLOAD_ROOT + "medical_cost.csv"
+DOWNLOAD_ROOT = "https://raw.githubusercontent.com/jumikao/USA_Medical_Insurance_Analysis/"
+DATA_URL = DOWNLOAD_ROOT + "probka.csv"
 
 
 #funkcja zwracajaca zawartosc pliku
