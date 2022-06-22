@@ -4,7 +4,9 @@
 
 
 
+
 #"DATA COLLECTION"
+#importujemy dane z repozytorium Kamila Pabijan - naszego trenera.
 
 import pandas as pd
 
@@ -18,10 +20,16 @@ print(data_df.columns)
 print("........")
 print(data_df.info())
 
-
+print("........")
+print(data_df.describe())
 
 
 #"DATA CLEANING"
+#Wnioski:
+#- brak duplikatów
+#- brak Nan-ów
+#- brak szumów, wartości są w poprawnych formatach, wartości mają sens.
+#W analizie występuje dysproporcja w ilości danych pomiędzy palaczami i nie-palaczami (1:4)
 
 #funkcja .duplicated() - czy są zduplikowane wiersze
 print(data_df.duplicated())
@@ -33,14 +41,8 @@ print(data_df.isna())
 #brak Nan-ów
 
 
-#wyświetlanie szumów za pomocą wykresu
-import matplotlib.pyplot as plt
-plt.scatter(data_df.index, data_df['smoker'])
-plt.show()
-# brak szumów
 
-
-
+#funkcja .unique() - szukanie szumów
 print(data_df['smoker'].unique())
 #Out: ['yes' 'no']
 # Brak wartości błędnych - yes/no - prawidłowe odpowiedzi
@@ -63,3 +65,25 @@ print(data_df['charges'].unique())
 
 print(data_df['bmi'].unique())
 #Out:
+
+
+#wyświetlanie szumów za pomocą wykresu dla kolumny 'smoker'
+import matplotlib.pyplot as plt
+plt.scatter(data_df.index, data_df['smoker'])
+plt.show()
+# brak szumów
+
+#Sprawdzenie reprezentatywności danych
+smoker=0
+non_smoker=0
+
+for person in data_df["smoker"]:
+    if person== "yes":
+        smoker +=1
+    else:
+        non_smoker +=1
+
+print("Number od smokers: ", smoker)
+print("Number of non-smokers: ", non_smoker)
+
+
