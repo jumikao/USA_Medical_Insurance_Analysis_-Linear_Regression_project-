@@ -70,10 +70,10 @@ print(data_df['bmi'].unique())
 
 #<<<<!!!!!>>>>
 #wyświetlanie szumów za pomocą wykresu dla kolumny 'smoker'
-# import matplotlib.pyplot as plt
-# plt.scatter(data_df.index, data_df['smoker'])
-# plt.show()
-# brak szumów
+import matplotlib.pyplot as plt
+plt.scatter(data_df.index, data_df['smoker'])
+plt.show()
+#brak szumów
 
 #Sprawdzenie reprezentatywności danych
 smoker=0
@@ -351,3 +351,9 @@ print('Współczynnik R^2 dla danych uczących: %.3f, testowych: %.3f' % (
 
 # MSE na próbkach uczących: 37828889.747, testowych: 32171708.572
 # Współczynnik R^2 dla danych uczących: 0.736, testowych: 0.798 (+0,129 niż w bazowym modelu (tylko smoker)
+
+
+
+
+#<<<<<<<<<PIPELINE>>>>>>>>>>
+
