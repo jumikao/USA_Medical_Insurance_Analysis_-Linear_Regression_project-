@@ -139,3 +139,4 @@ print("Number of non-smokers: ", non_smoker)
 # y_test_pred = regr.predict(X_test)
 #
 # #ocena modelu: MSE, R^2
+
