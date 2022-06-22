@@ -1,11 +1,13 @@
-#DESCRIPTION
+#<<<<<<<<<<<<<<<DESCRIPTION>>>>>>>>>>>>>>>
 # The aim of this project is to analyse the medical insurance costs of insurance packages in USA
 # and try to predict the potencial medical insurance costs depending on the assumptions given.
 
+#In particular, we aim to check how feature of "smoking/non-smoking" affect number of medical insurance charges paid.
+
+#Project conducted by Asia & Marta.
 
 
-
-#"DATA COLLECTION"
+#<<<<<<<<<<DATA COLLECTION>>>>>>>>>>>>>>>>>
 #importujemy dane z repozytorium Kamila Pabijan - naszego trenera.
 
 import pandas as pd
@@ -24,7 +26,7 @@ print("........")
 print(data_df.describe())
 
 
-#"DATA CLEANING"
+#<<<<<<<<<<<<DATA CLEANING>>>>>>>>>>>>>>
 #Wnioski:
 #- brak duplikatów
 #- brak Nan-ów
@@ -66,11 +68,11 @@ print(data_df['charges'].unique())
 print(data_df['bmi'].unique())
 #Out:
 
-
+#<<<<!!!!!>>>>
 #wyświetlanie szumów za pomocą wykresu dla kolumny 'smoker'
-import matplotlib.pyplot as plt
-plt.scatter(data_df.index, data_df['smoker'])
-plt.show()
+# import matplotlib.pyplot as plt
+# plt.scatter(data_df.index, data_df['smoker'])
+# plt.show()
 # brak szumów
 
 #Sprawdzenie reprezentatywności danych
@@ -87,3 +89,53 @@ print("Number od smokers: ", smoker)
 print("Number of non-smokers: ", non_smoker)
 
 
+
+
+
+#<<<<<<<<<Exploratory Data Analysis (EDA)>>>>>>>>>>>>>>>>>
+#EDA Conducted in Colaboratory/Jupiter Notebooks
+
+
+
+
+
+
+
+# #<<<<<<<<<Feature engineering>>>>>>>>>>>>>>>>>
+# import numpy as np
+#
+# from sklearn.model_selection import train_test_split
+# from sklearn import linear_model
+# from sklearn.metrics import mean_squared_error, r2_score
+#
+#
+# #zmienna objaśniająca
+#
+#
+# #szukana zmienna objaśniana
+# data_df['Charges_reg'] = data_df.target
+#
+#
+#
+#
+#
+#
+#
+# #<<<<<<<<<Modelling>>>>>>>>>>>>>>>>>
+#
+# X = data_df[['smoker']]
+# y = data_df['Charges_reg']
+#
+# #definiowanie podziału na dane testowe i treningowe
+# X_train, X_test, y_train, y_test = train_test_split(
+#     x, y, test_size=0.2, random_state=0)
+#
+# #budowanie modelu regresji i trenowanie modelu
+# regr = linear_model.LinearRegression()
+# regr.fit(X_train, y_train)
+#
+# #prognozowanie
+# y_train_pred = regr.predict(X_train)
+# y_test_pred = regr.predict(X_test)
+#
+# #ocena modelu: MSE, R^2
