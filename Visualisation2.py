@@ -173,6 +173,26 @@ sns.distplot(all_data.charges)
 sns.displot(all_data.charges, kde=True)
 
 
+##SPRAWDZAM SOBIE DANE (ILOSC,SREDNIA,ODCHYLENIE STANDARDOWE,MINIMALNE,25%,50%,75% WARTOSCI,MAXYMALNE)
+all_data.describe()
+
+##PROBUJE UTWORZYC ZBIOR TESTOWY
+import numpy as np
+def split_train_test(data,test_ratio):
+    shuffled_indices = np.random.permutation(len(data))
+    test_set_size = int(len(data) * test_ratio)
+    test_indices = shuffled_indices[:test_set_size]
+    train_indices = shuffled_indices[test_set_size:]
+    return data.iloc[train_indices], data_iloc[test_indices]
+
+#teraz uzycie tej funkcji ,rozdzielenie danych na pol
+train_set, test_set = split_train_test(all_data, 0.2)
+len(train_set)
+len(test_set)
+
+
+                                             
+
 
 
 
