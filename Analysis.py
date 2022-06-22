@@ -168,3 +168,186 @@ print('Współczynnik R^2 dla danych uczących: %.3f, testowych: %.3f' % (
         r2_score(y_train, y_train_pred),
         r2_score(y_test, y_test_pred)))
 
+#MSE na próbkach uczących: 56800240.511, testowych: 52630321.583
+#Współczynnik R^2 dla danych uczących: 0.604, testowych: 0.669
+
+
+
+
+#budowanie modelu regresji i trenowanie modelu dla 1 zmiennej objaśniającej: X="smoker","bmi"
+
+#zmienna objaśniająca
+X = data_df[['smoker','bmi']]
+
+#szukana zmienna objaśniana
+y = data_df['charges']
+
+#definiowanie podziału na dane testowe i treningowe
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=0)
+
+print("X_train:" , X_train)
+print("y_train:", y_train)
+
+#dla X_train i y_train przeprowadzić one-hot encoding
+X_train_dummies = pd.get_dummies(X_train)
+print("X_train_dummies: ", X_train_dummies)
+
+X_test_dummies =pd.get_dummies(X_test)
+print("X_test_dummies: ", X_test_dummies)
+
+
+regr = linear_model.LinearRegression()
+
+regr.fit(X_train_dummies, y_train)
+
+
+#Parametry swobody - w1,w2
+print("w1:", regr.coef_)        #w1
+print(".........")
+print("w0:", regr.intercept_)   #w0
+#funkcja regresji ma postać:
+#y= 8159 + 387(x_yes) - 11594(x_no) + 11594(x_bmi)
+
+
+#
+#prognozowanie
+y_train_pred = regr.predict(X_train_dummies)            #prognoza dla danych treningowych (uczących)
+y_test_pred = regr.predict(X_test_dummies)              #prognoza dla danych testowych
+#
+#
+#
+# #ocena modelu: MSE, R^2
+#MSE- błąd średniokwadratowy naszych prognoz
+print('MSE na próbkach uczących: %.3f, testowych: %.3f' % (
+        mean_squared_error(y_train, y_train_pred),  #wyliczenie MSE dla zestawu treningowego
+        mean_squared_error(y_test, y_test_pred)))   #wyliczenie MSE dla zestawu testowego
+
+#Współczynnik determinacji R^2
+print('Współczynnik R^2 dla danych uczących: %.3f, testowych: %.3f' % (
+        r2_score(y_train, y_train_pred),
+        r2_score(y_test, y_test_pred)))
+
+# MSE na próbkach uczących: 51004166.224, testowych: 46797181.737
+# Współczynnik R^2 dla danych uczących: 0.644, testowych: 0.706 (+0,037 niż w bazowym modelu(tylko smoker))
+
+
+
+
+#budowanie modelu regresji i trenowanie modelu dla 1 zmiennej objaśniającej: X="smoker","bmi","age"
+
+#zmienna objaśniająca
+X = data_df[['smoker','bmi','age']]
+
+#szukana zmienna objaśniana
+y = data_df['charges']
+
+#definiowanie podziału na dane testowe i treningowe
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=0)
+
+print("X_train:" , X_train)
+print("y_train:", y_train)
+
+#dla X_train i y_train przeprowadzić one-hot encoding
+X_train_dummies = pd.get_dummies(X_train)
+print("X_train_dummies: ", X_train_dummies)
+
+X_test_dummies =pd.get_dummies(X_test)
+print("X_test_dummies: ", X_test_dummies)
+
+
+regr = linear_model.LinearRegression()
+
+regr.fit(X_train_dummies, y_train)
+
+
+#Parametry swobody - w1,w2
+print("w1:", regr.coef_)        #w1
+print(".........")
+print("w0:", regr.intercept_)   #w0
+#funkcja regresji ma postać:
+#y= 8159 + 387(x_yes) - 11594(x_no) + 11594(x_bmi)
+
+
+#
+#prognozowanie
+y_train_pred = regr.predict(X_train_dummies)            #prognoza dla danych treningowych (uczących)
+y_test_pred = regr.predict(X_test_dummies)              #prognoza dla danych testowych
+#
+#
+#
+# #ocena modelu: MSE, R^2
+#MSE- błąd średniokwadratowy naszych prognoz
+print('MSE na próbkach uczących: %.3f, testowych: %.3f' % (
+        mean_squared_error(y_train, y_train_pred),  #wyliczenie MSE dla zestawu treningowego
+        mean_squared_error(y_test, y_test_pred)))   #wyliczenie MSE dla zestawu testowego
+
+#Współczynnik determinacji R^2
+print('Współczynnik R^2 dla danych uczących: %.3f, testowych: %.3f' % (
+        r2_score(y_train, y_train_pred),
+        r2_score(y_test, y_test_pred)))
+
+# MSE na próbkach uczących: 38099093.838, testowych: 32693237.939
+# Współczynnik R^2 dla danych uczących: 0.734, testowych: 0.795 (+0,126 niż w bazowym modelu (tylko smoker)
+
+
+
+
+
+#budowanie modelu regresji i trenowanie modelu dla 1 zmiennej objaśniającej: X="smoker","bmi","age","children"
+
+#zmienna objaśniająca
+X = data_df[['smoker','bmi','age','children']]
+
+#szukana zmienna objaśniana
+y = data_df['charges']
+
+#definiowanie podziału na dane testowe i treningowe
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=0)
+
+print("X_train:" , X_train)
+print("y_train:", y_train)
+
+#dla X_train i y_train przeprowadzić one-hot encoding
+X_train_dummies = pd.get_dummies(X_train)
+print("X_train_dummies: ", X_train_dummies)
+
+X_test_dummies =pd.get_dummies(X_test)
+print("X_test_dummies: ", X_test_dummies)
+
+
+regr = linear_model.LinearRegression()
+
+regr.fit(X_train_dummies, y_train)
+
+
+#Parametry swobody - w1,w2
+print("w1:", regr.coef_)        #w1
+print(".........")
+print("w0:", regr.intercept_)   #w0
+#funkcja regresji ma postać:
+#y= 8159 + 387(x_yes) - 11594(x_no) + 11594(x_bmi)
+
+
+#
+#prognozowanie
+y_train_pred = regr.predict(X_train_dummies)            #prognoza dla danych treningowych (uczących)
+y_test_pred = regr.predict(X_test_dummies)              #prognoza dla danych testowych
+#
+#
+#
+# #ocena modelu: MSE, R^2
+#MSE- błąd średniokwadratowy naszych prognoz
+print('MSE na próbkach uczących: %.3f, testowych: %.3f' % (
+        mean_squared_error(y_train, y_train_pred),  #wyliczenie MSE dla zestawu treningowego
+        mean_squared_error(y_test, y_test_pred)))   #wyliczenie MSE dla zestawu testowego
+
+#Współczynnik determinacji R^2
+print('Współczynnik R^2 dla danych uczących: %.3f, testowych: %.3f' % (
+        r2_score(y_train, y_train_pred),
+        r2_score(y_test, y_test_pred)))
+
+# MSE na próbkach uczących: 37828889.747, testowych: 32171708.572
+# Współczynnik R^2 dla danych uczących: 0.736, testowych: 0.798 (+0,129 niż w bazowym modelu (tylko smoker)
