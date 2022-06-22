@@ -11,7 +11,7 @@
 #importujemy dane z repozytorium Kamila Pabijan - naszego trenera.
 
 import pandas as pd
-
+#wczytanie pliku jako data frame
 data_df = pd.read_csv(r'https://raw.githubusercontent.com/Kamil128/ProjektPraktycznyRegresja/main/data/medical_cost/medical_cost.csv',
                  )
 
@@ -87,7 +87,9 @@ for person in data_df["smoker"]:
 
 print("Number od smokers: ", smoker)
 print("Number of non-smokers: ", non_smoker)
-
+#Out:
+# Number od smokers:  274
+# Number of non-smokers:  1064
 
 
 
@@ -102,41 +104,70 @@ print("Number of non-smokers: ", non_smoker)
 
 
 # #<<<<<<<<<Feature engineering>>>>>>>>>>>>>>>>>
-# import numpy as np
-#
-# from sklearn.model_selection import train_test_split
-# from sklearn import linear_model
-# from sklearn.metrics import mean_squared_error, r2_score
-#
-#
-# #zmienna objaśniająca
-#
-#
-# #szukana zmienna objaśniana
-# data_df['Charges_reg'] = data_df.target
-#
-#
-#
-#
-#
+import numpy as np
+
+from sklearn.model_selection import train_test_split
+from sklearn import linear_model
+from sklearn.metrics import mean_squared_error, r2_score
+
+
+#zmienna objaśniająca
+X = data_df[['smoker']]
+
+#szukana zmienna objaśniana
+y = data_df['charges']
+
+#definiowanie podziału na dane testowe i treningowe
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=0)
+
+print("X_train:" , X_train)
+print("y_train:", y_train)
+
+#dla X_train i y_train przeprowadzić one-hot encoding
+X_train_dummies = pd.get_dummies(X_train)
+print("X_train_dummies: ", X_train_dummies)
+
+y_train_dummies = pd.get_dummies(y_train)
+print("y_train_dummies: ", y_train_dummies)
+
+
+X_test_dummies =pd.get_dummies(X_test)
+print("X_test_dummies: ", X_test_dummies)
+
+y_test_dummies= pd.get_dummies(y_test)
+print("y_test_dummies: ", y_test_dummies)
 #
 #
 # #<<<<<<<<<Modelling>>>>>>>>>>>>>>>>>
 #
-# X = data_df[['smoker']]
-# y = data_df['Charges_reg']
+
 #
-# #definiowanie podziału na dane testowe i treningowe
-# X_train, X_test, y_train, y_test = train_test_split(
-#     x, y, test_size=0.2, random_state=0)
-#
-# #budowanie modelu regresji i trenowanie modelu
-# regr = linear_model.LinearRegression()
-# regr.fit(X_train, y_train)
-#
-# #prognozowanie
-# y_train_pred = regr.predict(X_train)
-# y_test_pred = regr.predict(X_test)
-#
+#budowanie modelu regresji i trenowanie modelu dla 1 zmiennej objaśniającej: X="smoker"
+regr = linear_model.LinearRegression()
+
+regr.fit(X_train_dummies, y_train_dummies)
+
+
+#Parametry swobody - w1,w2
+# print(regr.coef_)        #w1
+# print(".........")
+# print(regr.intercept_)   #w0
+
+#prognozowanie
+y_train_pred_dummies = regr.predict(X_train_dummies)            #prognoza dla danych treningowych (uczących)
+y_test_pred_dummies = regr.predict(X_test_dummies)              #prognoza dla danych testowych
+
+
+
 # #ocena modelu: MSE, R^2
+#MSE- błąd średniokwadratowy naszych prognoz
+print('MSE na próbkach uczących: %.3f, testowych: %.3f' % (
+        mean_squared_error(y_train_dummies, y_train_pred_dummies),  #wyliczenie MSE dla zestawu treningowego
+        mean_squared_error(y_test_dummies, y_test_pred_dummies)))   #wyliczenie MSE dla zestawu testowego
+
+#Współczynnik determinacji R^2
+print('Współczynnik R^2 dla danych uczących: %.3f, testowych: %.3f' % (
+        r2_score(y_train_dummies, y_train_pred_dummies),
+        r2_score(y_test_dummies, y_test_pred_dummies)))
 
