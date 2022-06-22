@@ -128,46 +128,43 @@ print("y_train:", y_train)
 X_train_dummies = pd.get_dummies(X_train)
 print("X_train_dummies: ", X_train_dummies)
 
-y_train_dummies = pd.get_dummies(y_train)
-print("y_train_dummies: ", y_train_dummies)
-
-
 X_test_dummies =pd.get_dummies(X_test)
 print("X_test_dummies: ", X_test_dummies)
 
-y_test_dummies= pd.get_dummies(y_test)
-print("y_test_dummies: ", y_test_dummies)
+
 #
 #
 # #<<<<<<<<<Modelling>>>>>>>>>>>>>>>>>
 #
-
-#
 #budowanie modelu regresji i trenowanie modelu dla 1 zmiennej objaśniającej: X="smoker"
 regr = linear_model.LinearRegression()
 
-regr.fit(X_train_dummies, y_train_dummies)
+regr.fit(X_train_dummies, y_train)
 
 
 #Parametry swobody - w1,w2
-# print(regr.coef_)        #w1
-# print(".........")
-# print(regr.intercept_)   #w0
+print("w1:", regr.coef_)        #w1
+print(".........")
+print("w0:", regr.intercept_)   #w0
+#funkcja regresji ma postać:
+#y= -1,18 + 1,18(x_yes) + 1,18(x_no)
+
+
 
 #prognozowanie
-y_train_pred_dummies = regr.predict(X_train_dummies)            #prognoza dla danych treningowych (uczących)
-y_test_pred_dummies = regr.predict(X_test_dummies)              #prognoza dla danych testowych
+y_train_pred = regr.predict(X_train_dummies)            #prognoza dla danych treningowych (uczących)
+y_test_pred = regr.predict(X_test_dummies)              #prognoza dla danych testowych
 
 
 
 # #ocena modelu: MSE, R^2
 #MSE- błąd średniokwadratowy naszych prognoz
 print('MSE na próbkach uczących: %.3f, testowych: %.3f' % (
-        mean_squared_error(y_train_dummies, y_train_pred_dummies),  #wyliczenie MSE dla zestawu treningowego
-        mean_squared_error(y_test_dummies, y_test_pred_dummies)))   #wyliczenie MSE dla zestawu testowego
+        mean_squared_error(y_train, y_train_pred),  #wyliczenie MSE dla zestawu treningowego
+        mean_squared_error(y_test, y_test_pred)))   #wyliczenie MSE dla zestawu testowego
 
 #Współczynnik determinacji R^2
 print('Współczynnik R^2 dla danych uczących: %.3f, testowych: %.3f' % (
-        r2_score(y_train_dummies, y_train_pred_dummies),
-        r2_score(y_test_dummies, y_test_pred_dummies)))
+        r2_score(y_train, y_train_pred),
+        r2_score(y_test, y_test_pred)))
 
