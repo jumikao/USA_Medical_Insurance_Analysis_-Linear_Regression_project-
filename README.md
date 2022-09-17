@@ -1,7 +1,8 @@
 # USA_Medical_Insurance_Analysis
-Projekt praktyczny z regresji Dataset medical_cost
+(Project conducted as a part of SDA Data Science course, Logistic Regression Workshop) 
 
-Projects authors: Marta & Asia from SDA ARPDataPL2 Group 
+
+Dataset: medical_cost
 
 The aim of this project is to analyse the medical insurance costs of insurance packages in USA and try to predict the potencial medical insurance costs depending on the assumptions given.
 
