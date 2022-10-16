@@ -1,5 +1,3 @@
-#linear_regression_project #data_analysis #visualization #feature_engineering #modelling
-
 USA_Medical_Insurance_Analysis
 (Project conducted as a part of SDA Data Science course, Logistic Regression Workshop, and developed further on) 
 
