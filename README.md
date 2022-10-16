@@ -1,10 +1,10 @@
 # USA_Medical_Insurance_Analysis
-(Project conducted as a part of SDA Data Science course, Logistic Regression Workshop) 
+(Project conducted as a part of SDA Data Science course, Logistic Regression Workshop, and developed further on) 
 
 
-Dataset: medical_cost
+Dataset: medical_cost.csv
 
-The aim of this project is to analyse the medical insurance costs of insurance packages in USA and try to predict the potencial medical insurance costs depending on the assumptions given.
+The aim of this project is to analyse the medical insurance costs of insurance packages in USA and to try to predict the potencial medical insurance costs depending on the assumptions given.
 
 The medical_cost dataset consists of the following data:
 - age
